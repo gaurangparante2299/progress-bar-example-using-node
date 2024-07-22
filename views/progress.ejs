@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Progress</title>
+    <style>
+        #progress {
+            width: 100%;
+            background-color: #f3f3f3;
+        }
+
+        #bar {
+            width: 0;
+            height: 30px;
+            background-color: #4caf50;
+            text-align: center;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Upload Progress</h1>
+    <p>Filename: <%= filename %></p>
+    <p>File Size: <%= fileSize %> bytes</p>
+    <div id="progress">
+        <div id="bar"></div>
+    </div>
+    <script>
+        let progress = document.getElementById('bar');
+        let width = 0;
+        let interval = setInterval(() => {
+            if (width >= 100) {
+                clearInterval(interval);
+            } else {
+                width++;
+                progress.style.width = width + '%';
+                progress.textContent = width + '%';
+            }
+        }, 10);
+    </script>
+</body>
+</html>
